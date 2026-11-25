@@ -1,0 +1,38 @@
+{
+  "id": "fx-acme-swe-reject",
+  "threadId": "th-acme-swe",
+  "internalDate": "1790359200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, Thank you for your interest in the Software Engineer role at Acme Robotics. Unfortunately, we have decided to move forward with other candidates. We ",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics <no-reply@us.greenhouse-mail.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Your application to Acme Robotics"
+      },
+      {
+        "name": "Date",
+        "value": "Fri, 25 Sep 2026 18:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLAoKVGhhbmsgeW91IGZvciB5b3VyIGludGVyZXN0IGluIHRoZSBTb2Z0d2FyZSBFbmdpbmVlciByb2xlIGF0IEFjbWUgUm9ib3RpY3MuIFVuZm9ydHVuYXRlbHksIHdlIGhhdmUgZGVjaWRlZCB0byBtb3ZlIGZvcndhcmQgd2l0aCBvdGhlciBjYW5kaWRhdGVzLgoKV2Ugd2lzaCB5b3UgdGhlIGJlc3QgaW4geW91ciBzZWFyY2guCg"
+        }
+      }
+    ]
+  }
+}

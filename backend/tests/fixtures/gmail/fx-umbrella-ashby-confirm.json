@@ -1,0 +1,38 @@
+{
+  "id": "fx-umbrella-ashby-confirm",
+  "threadId": "th-umbrella",
+  "internalDate": "1788921000000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks for your interest in the Platform Engineer role at Umbrella Labs. We've received your application.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Umbrella Labs <no-reply@ashbyhq.com>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thanks for applying!"
+      },
+      {
+        "name": "Date",
+        "value": "Wed, 09 Sep 2026 02:30:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciB5b3VyIGludGVyZXN0IGluIHRoZSBQbGF0Zm9ybSBFbmdpbmVlciByb2xlIGF0IFVtYnJlbGxhIExhYnMuIFdlJ3ZlIHJlY2VpdmVkIHlvdXIgYXBwbGljYXRpb24uCg"
+        }
+      }
+    ]
+  }
+}

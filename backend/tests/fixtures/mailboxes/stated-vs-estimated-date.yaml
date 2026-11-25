@@ -1,0 +1,10 @@
+name: stated-vs-estimated-date
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-hooli-linkedin-confirm, fx-umbrella-ashby-confirm]
+expected:
+  applications:
+    - {company: Hooli, position: Product Designer, status: submitted, date_applied: 2026-09-05, date_source: stated}
+    # 02:30 UTC on Sep 9 is 22:30 on Sep 8 in New York.
+    - {company: Umbrella Labs, position: Platform Engineer, status: submitted, date_applied: 2026-09-08, date_source: estimated}
+  review_items: []

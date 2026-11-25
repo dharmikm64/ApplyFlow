@@ -1,0 +1,42 @@
+{
+  "id": "fx-marketing-1",
+  "threadId": "th-mkt",
+  "internalDate": "1789200000000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Read this week's newsletter for interview tips. Special offer: 50% off premium coaching.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Interview Pros <news@interviewpros.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Our newsletter: 10 interview tips"
+      },
+      {
+        "name": "Date",
+        "value": "Sat, 12 Sep 2026 08:00:00 +0000"
+      },
+      {
+        "name": "List-Unsubscribe",
+        "value": "<mailto:unsubscribe@list.example>"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "UmVhZCB0aGlzIHdlZWsncyBuZXdzbGV0dGVyIGZvciBpbnRlcnZpZXcgdGlwcy4gU3BlY2lhbCBvZmZlcjogNTAlIG9mZiBwcmVtaXVtIGNvYWNoaW5nLgo"
+        }
+      }
+    ]
+  }
+}

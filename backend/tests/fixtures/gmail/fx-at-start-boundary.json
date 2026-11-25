@@ -1,0 +1,38 @@
+{
+  "id": "fx-at-start-boundary",
+  "threadId": "th-tz-2",
+  "internalDate": "1788235200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks for applying to Nakatomi Trading. Your application for the Security Analyst role has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Nakatomi Trading <no-reply@greenhouse.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Nakatomi Trading"
+      },
+      {
+        "name": "Date",
+        "value": "Tue, 01 Sep 2026 04:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciBhcHBseWluZyB0byBOYWthdG9taSBUcmFkaW5nLiBZb3VyIGFwcGxpY2F0aW9uIGZvciB0aGUgU2VjdXJpdHkgQW5hbHlzdCByb2xlIGhhcyBiZWVuIHJlY2VpdmVkLgo"
+        }
+      }
+    ]
+  }
+}

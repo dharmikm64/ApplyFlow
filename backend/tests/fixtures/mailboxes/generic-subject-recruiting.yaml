@@ -1,0 +1,8 @@
+name: generic-subject-recruiting
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-acme-careers-generic-subject]
+expected:
+  applications:
+    - {company: Acme Robotics, position: Robotics Technician, status: submitted, date_applied: 2026-09-14, date_source: estimated}
+  review_items: []

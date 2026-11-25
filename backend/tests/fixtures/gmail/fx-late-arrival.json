@@ -1,0 +1,38 @@
+{
+  "id": "fx-late-arrival",
+  "threadId": "th-late",
+  "internalDate": "1790811000000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks for applying to Massive Dynamic. Your application for the Field Researcher role has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Massive Dynamic <no-reply@greenhouse.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Massive Dynamic"
+      },
+      {
+        "name": "Date",
+        "value": "Wed, 30 Sep 2026 23:30:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciBhcHBseWluZyB0byBNYXNzaXZlIER5bmFtaWMuIFlvdXIgYXBwbGljYXRpb24gZm9yIHRoZSBGaWVsZCBSZXNlYXJjaGVyIHJvbGUgaGFzIGJlZW4gcmVjZWl2ZWQuCg"
+        }
+      }
+    ]
+  }
+}

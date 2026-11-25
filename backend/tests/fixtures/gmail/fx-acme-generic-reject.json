@@ -1,0 +1,38 @@
+{
+  "id": "fx-acme-generic-reject",
+  "threadId": "th-acme-generic",
+  "internalDate": "1790078400000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hello Jordan, Thank you for your application to Acme Robotics. Unfortunately, we will not be moving forward with your application at this time.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics Talent <talent@acme-robotics.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Update on your application"
+      },
+      {
+        "name": "Date",
+        "value": "Tue, 22 Sep 2026 12:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGVsbG8gSm9yZGFuLAoKVGhhbmsgeW91IGZvciB5b3VyIGFwcGxpY2F0aW9uIHRvIEFjbWUgUm9ib3RpY3MuIFVuZm9ydHVuYXRlbHksIHdlIHdpbGwgbm90IGJlIG1vdmluZyBmb3J3YXJkIHdpdGggeW91ciBhcHBsaWNhdGlvbiBhdCB0aGlzIHRpbWUuCg"
+        }
+      }
+    ]
+  }
+}

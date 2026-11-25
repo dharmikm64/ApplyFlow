@@ -1,0 +1,38 @@
+{
+  "id": "fx-stark-smartrecruiters-confirm",
+  "threadId": "th-stark",
+  "internalDate": "1789308000000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks! You applied for the QA Engineer position at Stark Systems. Your application has been submitted.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Stark Systems <no-reply@smartrecruiters.com>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Application submitted"
+      },
+      {
+        "name": "Date",
+        "value": "Sun, 13 Sep 2026 14:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzISBZb3UgYXBwbGllZCBmb3IgdGhlIFFBIEVuZ2luZWVyIHBvc2l0aW9uIGF0IFN0YXJrIFN5c3RlbXMuCllvdXIgYXBwbGljYXRpb24gaGFzIGJlZW4gc3VibWl0dGVkLgo"
+        }
+      }
+    ]
+  }
+}

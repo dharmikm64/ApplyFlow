@@ -1,0 +1,4 @@
+name: req-id-split
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-globex-da-confirm-r1, fx-globex-da-confirm-r2]

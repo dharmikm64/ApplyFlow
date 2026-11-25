@@ -1,0 +1,38 @@
+{
+  "id": "fx-globex-da-confirm-r2",
+  "threadId": "th-globex-3",
+  "internalDate": "1788944400000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thank you for applying to the Data Analyst position at Globex. Job Requisition ID: R-20999 We have received your application.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Globex Careers <globex@myworkday.com>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Application received"
+      },
+      {
+        "name": "Date",
+        "value": "Wed, 09 Sep 2026 09:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmsgeW91IGZvciBhcHBseWluZyB0byB0aGUgRGF0YSBBbmFseXN0IHBvc2l0aW9uIGF0IEdsb2JleC4KSm9iIFJlcXVpc2l0aW9uIElEOiBSLTIwOTk5CldlIGhhdmUgcmVjZWl2ZWQgeW91ciBhcHBsaWNhdGlvbi4K"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "fx-bob-confirm",
+  "threadId": "th-bob",
+  "internalDate": "1788609600000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks for applying to Pied Piper. Your application for the Compression Engineer role has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Pied Piper <no-reply@greenhouse.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Pied Piper"
+      },
+      {
+        "name": "Date",
+        "value": "Sat, 05 Sep 2026 12:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciBhcHBseWluZyB0byBQaWVkIFBpcGVyLiBZb3VyIGFwcGxpY2F0aW9uIGZvciB0aGUgQ29tcHJlc3Npb24gRW5naW5lZXIgcm9sZSBoYXMgYmVlbiByZWNlaXZlZC4K"
+        }
+      }
+    ]
+  }
+}

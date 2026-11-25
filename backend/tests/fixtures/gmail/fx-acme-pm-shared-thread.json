@@ -1,0 +1,38 @@
+{
+  "id": "fx-acme-pm-shared-thread",
+  "threadId": "th-acme-swe",
+  "internalDate": "1788699600000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks for applying to Acme Robotics. Your application for the Product Manager role has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics <no-reply@us.greenhouse-mail.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Acme Robotics"
+      },
+      {
+        "name": "Date",
+        "value": "Sun, 06 Sep 2026 13:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciBhcHBseWluZyB0byBBY21lIFJvYm90aWNzLiBZb3VyIGFwcGxpY2F0aW9uIGZvciB0aGUgUHJvZHVjdCBNYW5hZ2VyIHJvbGUgaGFzIGJlZW4gcmVjZWl2ZWQuCg"
+        }
+      }
+    ]
+  }
+}

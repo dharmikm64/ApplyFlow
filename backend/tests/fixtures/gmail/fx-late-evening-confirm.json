@@ -1,0 +1,38 @@
+{
+  "id": "fx-late-evening-confirm",
+  "threadId": "th-tz-3",
+  "internalDate": "1788492600000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thanks for applying to Oscorp. Your application for the Research Scientist role has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Oscorp <no-reply@greenhouse.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Oscorp"
+      },
+      {
+        "name": "Date",
+        "value": "Fri, 04 Sep 2026 03:30:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciBhcHBseWluZyB0byBPc2NvcnAuIFlvdXIgYXBwbGljYXRpb24gZm9yIHRoZSBSZXNlYXJjaCBTY2llbnRpc3Qgcm9sZSBoYXMgYmVlbiByZWNlaXZlZC4K"
+        }
+      }
+    ]
+  }
+}

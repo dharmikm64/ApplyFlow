@@ -1,0 +1,38 @@
+{
+  "id": "fx-bank-false-positive",
+  "threadId": "th-bank-1",
+  "internalDate": "1789819200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thank you for applying for our Platinum Card at Example Bank. Your application has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Example Bank <cards@examplebank.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying"
+      },
+      {
+        "name": "Date",
+        "value": "Sat, 19 Sep 2026 12:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmsgeW91IGZvciBhcHBseWluZyBmb3Igb3VyIFBsYXRpbnVtIENhcmQgYXQgRXhhbXBsZSBCYW5rLiBZb3VyIGFwcGxpY2F0aW9uIGhhcyBiZWVuIHJlY2VpdmVkLgo"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+name: tz-boundaries
+timezone: America/New_York
+start_date: 2026-09-01
+# fx-before-start-boundary is 1 s before 00:00 NY on Sep 1 (excluded); fx-at-start-boundary is
+# exactly 00:00 NY (included); fx-late-evening-confirm is 23:30 NY on Sep 3 (= Sep 4 UTC).
+messages: [fx-before-start-boundary, fx-at-start-boundary, fx-late-evening-confirm, fx-trash-confirm]
+expected:
+  applications:
+    - {company: Nakatomi Trading, position: Security Analyst, status: submitted, date_applied: 2026-09-01, date_source: estimated}
+    - {company: Oscorp, position: Research Scientist, status: submitted, date_applied: 2026-09-03, date_source: estimated}
+  review_items: []

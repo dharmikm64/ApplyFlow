@@ -1,0 +1,38 @@
+{
+  "id": "fx-spam-confirm",
+  "threadId": "th-spam",
+  "internalDate": "1789372800000",
+  "labelIds": [
+    "SPAM"
+  ],
+  "snippet": "Thank you for applying to Totally Real Corp for the Wire Transfer Specialist role.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Totally Real Corp <hr@totally-real.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Totally Real Corp"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 14 Sep 2026 08:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmsgeW91IGZvciBhcHBseWluZyB0byBUb3RhbGx5IFJlYWwgQ29ycCBmb3IgdGhlIFdpcmUgVHJhbnNmZXIgU3BlY2lhbGlzdCByb2xlLgo"
+        }
+      }
+    ]
+  }
+}

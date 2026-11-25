@@ -30,3 +30,9 @@ frontend/blob-report/
 *.log
 logs/
 .DS_Store
+frontend/coverage/
+*.tmp
+*.swp
+.vscode/
+.idea/
+Thumbs.db

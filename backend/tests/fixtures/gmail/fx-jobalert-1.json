@@ -1,0 +1,42 @@
+{
+  "id": "fx-jobalert-1",
+  "threadId": "th-alert",
+  "internalDate": "1789027200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Jobs you may be interested in: Software Engineer at Acme Robotics Backend Engineer at Initech Apply now.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "12 new jobs for Software Engineer"
+      },
+      {
+        "name": "Date",
+        "value": "Thu, 10 Sep 2026 08:00:00 +0000"
+      },
+      {
+        "name": "List-Unsubscribe",
+        "value": "<mailto:unsubscribe@list.example>"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "Sm9icyB5b3UgbWF5IGJlIGludGVyZXN0ZWQgaW46ClNvZnR3YXJlIEVuZ2luZWVyIGF0IEFjbWUgUm9ib3RpY3MKQmFja2VuZCBFbmdpbmVlciBhdCBJbml0ZWNoCkFwcGx5IG5vdy4K"
+        }
+      }
+    ]
+  }
+}

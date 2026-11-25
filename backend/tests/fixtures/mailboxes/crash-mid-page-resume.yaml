@@ -1,0 +1,6 @@
+name: crash-mid-page-resume
+timezone: America/New_York
+start_date: 2026-09-01
+page_size: 2
+messages: [fx-acme-swe-confirm, fx-acme-swe-interview, fx-acme-swe-reject, fx-acme-pm-confirm,
+           fx-globex-reject-only, fx-jobalert-1, fx-ad-1, fx-initech-offer, fx-spam-confirm]

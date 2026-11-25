@@ -1,0 +1,36 @@
+{
+  "id": "fx-archived-confirm",
+  "threadId": "th-archived",
+  "internalDate": "1789462800000",
+  "labelIds": [],
+  "snippet": "Thanks for applying to Cyberdyne. Your application for the ML Engineer role has been received.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Cyberdyne <no-reply@greenhouse.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Cyberdyne"
+      },
+      {
+        "name": "Date",
+        "value": "Tue, 15 Sep 2026 09:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmtzIGZvciBhcHBseWluZyB0byBDeWJlcmR5bmUuIFlvdXIgYXBwbGljYXRpb24gZm9yIHRoZSBNTCBFbmdpbmVlciByb2xlIGhhcyBiZWVuIHJlY2VpdmVkLgo"
+        }
+      }
+    ]
+  }
+}

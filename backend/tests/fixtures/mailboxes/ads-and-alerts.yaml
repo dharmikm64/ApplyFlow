@@ -1,0 +1,7 @@
+name: ads-and-alerts
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-jobalert-1, fx-ad-1, fx-marketing-1]
+expected:
+  applications: []
+  review_items: []

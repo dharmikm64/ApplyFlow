@@ -1,0 +1,4 @@
+name: out-of-order-confirmation
+timezone: America/New_York
+start_date: 2026-09-10
+messages: [fx-acme-swe-confirm, fx-acme-swe-reject]

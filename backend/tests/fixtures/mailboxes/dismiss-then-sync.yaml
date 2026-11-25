@@ -1,0 +1,5 @@
+name: dismiss-then-sync
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-bank-false-positive]
+append: [fx-bank-false-positive-2]

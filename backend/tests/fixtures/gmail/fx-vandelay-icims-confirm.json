@@ -1,0 +1,38 @@
+{
+  "id": "fx-vandelay-icims-confirm",
+  "threadId": "th-vandelay",
+  "internalDate": "1789135200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "We have received your application. Job Title: Import Export Analyst Requisition ID: 2026-1187",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Vandelay Industries <careers@vandelay.icims.com>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Vandelay Industries"
+      },
+      {
+        "name": "Date",
+        "value": "Fri, 11 Sep 2026 14:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "V2UgaGF2ZSByZWNlaXZlZCB5b3VyIGFwcGxpY2F0aW9uLgpKb2IgVGl0bGU6IEltcG9ydCBFeHBvcnQgQW5hbHlzdApSZXF1aXNpdGlvbiBJRDogMjAyNi0xMTg3Cg"
+        }
+      }
+    ]
+  }
+}

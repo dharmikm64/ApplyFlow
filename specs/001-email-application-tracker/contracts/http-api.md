@@ -159,3 +159,7 @@ revokes Gmail at Google, deletes the user and every owned record (cascade), and 
 | `POST /test/gmail/connect` `{ "mailbox": "<fixture name>" }` | Connects the user to a fixture mailbox. |
 | `POST /test/gmail/append` `{ "mailbox": "...", "messages": ["<fixture id>"] }` | Adds fixture messages to simulate new mail before "Sync now". |
 | `POST /test/gmail/revoke` | Makes the next fixture call return `invalid_grant`. |
+| `POST /test/gmail/abort` `{ "after_pages": 1 \| null }` | Simulates a worker crash after N list pages (resume tests). |
+| `POST /test/clock` `{ "now": "ts" \| null }` | Overrides the server clock so scan windows are deterministic. |
+| `POST /test/worker/run` | Processes queued runs synchronously. |
+| `POST /test/reset` | Truncates the `*_test` database and clears fixture state (E2E global setup). |

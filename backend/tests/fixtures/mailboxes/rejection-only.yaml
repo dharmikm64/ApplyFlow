@@ -1,0 +1,8 @@
+name: rejection-only
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-globex-reject-only]
+expected:
+  applications:
+    - {company: Globex, position: Data Analyst, status: rejected, date_applied: null, date_source: unknown}
+  review_items: []

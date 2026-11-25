@@ -1,0 +1,7 @@
+name: empty-mailbox
+timezone: America/New_York
+start_date: 2026-09-01
+messages: []
+expected:
+  applications: []
+  review_items: []

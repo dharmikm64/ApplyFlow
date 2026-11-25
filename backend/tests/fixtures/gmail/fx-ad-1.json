@@ -1,0 +1,38 @@
+{
+  "id": "fx-ad-1",
+  "threadId": "th-ad",
+  "internalDate": "1789113600000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, we think you'd be a great fit for our Senior Engineer role at Hooli. Apply now!",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Hooli Recruiting <talent@hooli.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Opportunity at Hooli"
+      },
+      {
+        "name": "Date",
+        "value": "Fri, 11 Sep 2026 08:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLCB3ZSB0aGluayB5b3UnZCBiZSBhIGdyZWF0IGZpdCBmb3Igb3VyIFNlbmlvciBFbmdpbmVlciByb2xlIGF0IEhvb2xpLiBBcHBseSBub3chCg"
+        }
+      }
+    ]
+  }
+}

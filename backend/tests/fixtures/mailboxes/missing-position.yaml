@@ -1,0 +1,4 @@
+name: missing-position
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-soylent-no-position]

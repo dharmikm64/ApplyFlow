@@ -1,0 +1,38 @@
+{
+  "id": "fx-trash-confirm",
+  "threadId": "th-trash",
+  "internalDate": "1789376400000",
+  "labelIds": [
+    "TRASH"
+  ],
+  "snippet": "Thank you for applying to Bluth Company for the Banana Stand Manager role.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Bluth Company <careers@bluth.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Bluth Company"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 14 Sep 2026 09:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmsgeW91IGZvciBhcHBseWluZyB0byBCbHV0aCBDb21wYW55IGZvciB0aGUgQmFuYW5hIFN0YW5kIE1hbmFnZXIgcm9sZS4K"
+        }
+      }
+    ]
+  }
+}

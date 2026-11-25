@@ -1,0 +1,38 @@
+{
+  "id": "fx-new-interview-oct",
+  "threadId": "th-acme-swe",
+  "internalDate": "1791212400000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, we'd like to schedule a technical interview for the Software Engineer role at Acme Robotics.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics <no-reply@us.greenhouse-mail.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Interview invitation: Software Engineer"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 05 Oct 2026 15:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLCB3ZSdkIGxpa2UgdG8gc2NoZWR1bGUgYSB0ZWNobmljYWwgaW50ZXJ2aWV3IGZvciB0aGUgU29mdHdhcmUgRW5naW5lZXIgcm9sZSBhdCBBY21lIFJvYm90aWNzLgo"
+        }
+      }
+    ]
+  }
+}

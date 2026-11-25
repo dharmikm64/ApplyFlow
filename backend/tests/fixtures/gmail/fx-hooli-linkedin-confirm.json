@@ -1,0 +1,38 @@
+{
+  "id": "fx-hooli-linkedin-confirm",
+  "threadId": "th-hooli",
+  "internalDate": "1788811200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Your application was sent to Hooli Product Designer Hooli \u00b7 Remote Applied on September 5, 2026",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "LinkedIn <jobs-noreply@linkedin.com>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Jordan, your application was sent to Hooli"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 07 Sep 2026 20:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "WW91ciBhcHBsaWNhdGlvbiB3YXMgc2VudCB0byBIb29saQoKUHJvZHVjdCBEZXNpZ25lcgpIb29saSDCtyBSZW1vdGUKCkFwcGxpZWQgb24gU2VwdGVtYmVyIDUsIDIwMjYK"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "fx-acme-swe-confirm",
+  "threadId": "th-acme-swe",
+  "internalDate": "1788537600000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, Thanks for applying to Acme Robotics. Your application for the Software Engineer role has been received and our team will review it. Best, Acme Robot",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics <no-reply@us.greenhouse-mail.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Acme Robotics"
+      },
+      {
+        "name": "Date",
+        "value": "Fri, 04 Sep 2026 16:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLAoKVGhhbmtzIGZvciBhcHBseWluZyB0byBBY21lIFJvYm90aWNzLiBZb3VyIGFwcGxpY2F0aW9uIGZvciB0aGUgU29mdHdhcmUgRW5naW5lZXIgcm9sZSBoYXMgYmVlbiByZWNlaXZlZCBhbmQgb3VyIHRlYW0gd2lsbCByZXZpZXcgaXQuCgpCZXN0LApBY21lIFJvYm90aWNzIFJlY3J1aXRpbmcK"
+        }
+      },
+      {
+        "mimeType": "text/html",
+        "body": {
+          "data": "PGh0bWw-PGJvZHk-PHA-SGkgSm9yZGFuLDwvcD48cD5UaGFua3MgZm9yIGFwcGx5aW5nIHRvIDxiPkFjbWUgUm9ib3RpY3M8L2I-LiBZb3VyIGFwcGxpY2F0aW9uIGZvciB0aGUgU29mdHdhcmUgRW5naW5lZXIgcm9sZSBoYXMgYmVlbiByZWNlaXZlZCBhbmQgb3VyIHRlYW0gd2lsbCByZXZpZXcgaXQuPC9wPjxwPkJlc3QsPGJyPkFjbWUgUm9ib3RpY3MgUmVjcnVpdGluZzwvcD48L2JvZHk-PC9odG1sPgo"
+        }
+      }
+    ]
+  }
+}

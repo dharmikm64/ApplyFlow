@@ -65,20 +65,26 @@ same file drives integration tests and E2E.
 
 ```yaml
 name: core-journey
+address: jordan@candidate.test
 timezone: America/New_York
 start_date: 2026-09-01
 messages: [fx-acme-swe-confirm, fx-acme-swe-interview, fx-acme-swe-reject,
            fx-acme-pm-confirm, fx-globex-reject-only, fx-jobalert-1, fx-ad-1,
-           fx-initech-offer, fx-before-start-boundary, fx-at-start-boundary, fx-spam-confirm]
+           fx-initech-offer, fx-spam-confirm]
 expected:
   applications:
     - {company: Acme Robotics, position: Software Engineer, status: rejected,
        date_applied: 2026-09-04, date_source: estimated}
-    - {company: Acme Robotics, position: Product Manager, status: submitted}
-    - {company: Globex, position: Data Analyst, status: rejected, date_applied: null}
-  review_items: [{type: offer_or_withdrawal, message: fx-initech-offer}]
-  ignored: [fx-jobalert-1, fx-ad-1, fx-before-start-boundary, fx-spam-confirm]
+    - {company: Acme Robotics, position: Product Manager, status: submitted,
+       date_applied: 2026-09-06, date_source: estimated}
+    - {company: Globex, position: Data Analyst, status: rejected,
+       date_applied: null, date_source: unknown}
+  review_items: [offer_or_withdrawal]
 ```
+
+Fixtures are authored in `backend/tests/fixtures/sources/messages.yaml` and generated into the
+JSON shape above by `backend/tests/fixtures/build_fixtures.py`. Start-date boundaries live in the
+`tz-boundaries` mailbox.
 
 Required scenario coverage (each maps to a spec acceptance scenario or edge case):
 `core-journey`, `same-company-two-positions`, `rescan-idempotent`, `ads-and-alerts`,

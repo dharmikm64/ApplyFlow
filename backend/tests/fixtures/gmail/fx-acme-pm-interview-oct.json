@@ -1,0 +1,38 @@
+{
+  "id": "fx-acme-pm-interview-oct",
+  "threadId": "th-acme-pm",
+  "internalDate": "1791208800000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, we'd like to schedule an interview for the Product Manager role at Acme Robotics. Please share your availability.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics <no-reply@us.greenhouse-mail.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Interview invitation: Product Manager"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 05 Oct 2026 14:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLCB3ZSdkIGxpa2UgdG8gc2NoZWR1bGUgYW4gaW50ZXJ2aWV3IGZvciB0aGUgUHJvZHVjdCBNYW5hZ2VyIHJvbGUgYXQgQWNtZSBSb2JvdGljcy4gUGxlYXNlIHNoYXJlIHlvdXIgYXZhaWxhYmlsaXR5Lgo"
+        }
+      }
+    ]
+  }
+}

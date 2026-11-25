@@ -1,0 +1,4 @@
+name: reapply-after-rejection
+timezone: America/New_York
+start_date: 2026-09-01
+messages: [fx-acme-swe-confirm, fx-acme-swe-reject, fx-acme-swe-reconfirm]

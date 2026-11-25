@@ -1,0 +1,38 @@
+{
+  "id": "fx-soylent-no-position",
+  "threadId": "th-soylent",
+  "internalDate": "1789732800000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Thank you for applying to Soylent Corp. We have received your application and will review it shortly.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Soylent Corp <careers@soylent.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Thank you for applying to Soylent Corp"
+      },
+      {
+        "name": "Date",
+        "value": "Fri, 18 Sep 2026 12:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "VGhhbmsgeW91IGZvciBhcHBseWluZyB0byBTb3lsZW50IENvcnAuIFdlIGhhdmUgcmVjZWl2ZWQgeW91ciBhcHBsaWNhdGlvbiBhbmQgd2lsbCByZXZpZXcgaXQgc2hvcnRseS4K"
+        }
+      }
+    ]
+  }
+}

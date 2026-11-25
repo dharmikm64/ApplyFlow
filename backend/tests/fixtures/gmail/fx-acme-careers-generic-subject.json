@@ -1,0 +1,38 @@
+{
+  "id": "fx-acme-careers-generic-subject",
+  "threadId": "th-acme-careers",
+  "internalDate": "1789405200000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, thank you for your application to Acme Robotics for the Robotics Technician position. We will be in touch.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics Careers <careers@acme-robotics.example>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Update from Acme Robotics"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 14 Sep 2026 17:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLCB0aGFuayB5b3UgZm9yIHlvdXIgYXBwbGljYXRpb24gdG8gQWNtZSBSb2JvdGljcyBmb3IgdGhlIFJvYm90aWNzIFRlY2huaWNpYW4gcG9zaXRpb24uIFdlIHdpbGwgYmUgaW4gdG91Y2guCg"
+        }
+      }
+    ]
+  }
+}

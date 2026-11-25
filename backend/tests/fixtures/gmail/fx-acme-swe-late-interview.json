@@ -1,0 +1,38 @@
+{
+  "id": "fx-acme-swe-late-interview",
+  "threadId": "th-acme-swe-2",
+  "internalDate": "1790604000000",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Hi Jordan, We would like to invite you to an onsite interview for the Software Engineer role at Acme Robotics.",
+  "payload": {
+    "mimeType": "multipart/alternative",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Acme Robotics <no-reply@us.greenhouse-mail.io>"
+      },
+      {
+        "name": "To",
+        "value": "Jordan Candidate <jordan@candidate.test>"
+      },
+      {
+        "name": "Subject",
+        "value": "Onsite interview: Software Engineer"
+      },
+      {
+        "name": "Date",
+        "value": "Mon, 28 Sep 2026 14:00:00 +0000"
+      }
+    ],
+    "parts": [
+      {
+        "mimeType": "text/plain",
+        "body": {
+          "data": "SGkgSm9yZGFuLAoKV2Ugd291bGQgbGlrZSB0byBpbnZpdGUgeW91IHRvIGFuIG9uc2l0ZSBpbnRlcnZpZXcgZm9yIHRoZSBTb2Z0d2FyZSBFbmdpbmVlciByb2xlIGF0IEFjbWUgUm9ib3RpY3MuCg"
+        }
+      }
+    ]
+  }
+}
