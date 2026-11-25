@@ -68,6 +68,10 @@ Technical Context unknowns are resolved here.
   if revocation fails, and record the failure without the token. On `invalid_grant` during a
   job, mark the connection `revoked`, delete the ciphertext, and fail the run with reason
   `reconnect_required`.
+- **Testing-mode expiry**: Google issues refresh tokens that **expire after 7 days** to apps in
+  "Testing" publishing status that request Gmail scopes. Expect `invalid_grant` about weekly.
+  This uses the same path as revocation (status `revoked`), but the reconnect banner adds a
+  plain-language note: "Google limits apps in testing to 7 days of access; reconnect to continue."
 - **Rationale**: Satisfies Constitution IV and FR-041/FR-045 with a well-reviewed primitive.
 - **Alternatives**: pgcrypto (puts the key in SQL statements and logs); KMS (costs money and
   isn't available locally).
@@ -75,10 +79,14 @@ Technical Context unknowns are resolved here.
 ## R5. Date boundary → exact timestamp
 
 - **Decision**: Store `start_date` (date) and `timezone` (IANA name; browser-detected and
-  editable). Compute `window_start_utc = datetime.combine(start_date, time.min,
+  editable) together on `recruiting_cycles`. This is the **only** stored time zone, and it
+  governs both the window and estimated Date Applied dates. Compute `window_start_utc = datetime.combine(start_date, time.min,
   ZoneInfo(tz)).astimezone(UTC)`. A run's `window_end_utc` is the moment the run was created.
   Inclusion test on Gmail `internalDate` (ms epoch): `window_start <= internalDate <
   window_end`.
+- **Sync overlap**: a sync's segment starts at `covered_to − 1 hour`, so a message whose
+  `internalDate` falls just before the previous run's end but that became listable late is
+  still seen. The overlap is free because processed messages are skipped (R6).
 - **Gmail query**: `after:{epoch(window_start) - 86400} before:{epoch(window_end) + 86400}`
   (epoch-second form, padded by a day). The exact boundary is then applied in code using
   `internalDate`. This avoids depending on Gmail's undocumented inclusive/exclusive semantics
@@ -113,6 +121,11 @@ Technical Context unknowns are resolved here.
     with `reconnect_required`. Other unrecoverable errors fail the run with a user-safe reason,
     the last successful sync time is not advanced (FR-011), and the user can retry (a new run
     resumes via idempotency).
+  - **Disconnect / cancellation**: before each page, the job re-reads `gmail_connections`. If
+    the row is gone or not `connected`, it stops immediately with `gmail_disconnected` (or
+    `reconnect_required`), discards the in-memory access token, and makes no further Gmail
+    request. `DELETE /api/gmail` and `DELETE /api/account` also mark any queued or running run
+    failed first.
   - **Batching**: work is chunked per page (up to 500 IDs), with a database commit after each
     chunk, so an interruption loses at most one chunk of work.
 - **Rationale**: Uses infrastructure we already have (Postgres), works locally with one command,
@@ -132,10 +145,20 @@ Technical Context unknowns are resolved here.
      myworkdayjobs.com, ashbyhq.com, icims.com, smartrecruiters.com, jobvite.com, workable.com,
      taleo.net, successfactors, linkedin.com application notices, etc.), recruiting phrases in
      the subject or snippet, and `careers@`/`recruiting@`/`talent@`/`jobs@` style local parts.
-     Messages scoring above a **deliberately low** threshold become candidates. Every screened
+     **Candidate rule (favors recall)**: a message is a candidate if it has **any one** of:
+     (a) a sender domain on the ATS list; (b) a recruiting local part (`careers`, `recruiting`,
+     `recruiter`, `talent`, `jobs`, `hr`, `hiring`, `people`); (c) a subject or snippet match
+     against the recruiting phrase list (`application`, `applying`, `applied`, `interview`,
+     `assessment`, `screening`, `candidate`, `position`, `role`, `requisition`, `offer`, `next
+     steps`, `move forward`, `moving forward`, `unfortunately`). It is excluded only when it
+     matches none of these. Noise (job alerts, marketing) is decided later by extraction, not
+     by screening. Every screened
      message is counted, so progress reports "examined N emails, M looked recruiting-related."
   3. **Fetch** candidates with `format=full`. The body is parsed in memory and discarded after
      extraction.
+- **Out-of-window messages**: messages returned only because of the ±1-day padding, and outside
+  the exact window, are skipped **without** being recorded, so a later back-fill can still
+  process them.
 - **Recall safeguard**: The screener is tuned to favor recall. The fixture suite includes
   recruiting emails with generic subjects ("Update from Acme") from non-ATS domains to prevent
   silent misses. Screened-out messages are recorded in `processed_messages` with
@@ -242,7 +265,7 @@ later doesn't need a redesign.
     resolved. A `confirmation` never lowers status.
   - `offer`/`withdrawal` events never change status → review item (FR-017).
   - **Date Applied**: the earliest `stated_applied_date` among confirmations → `stated`; else
-    the earliest confirmation's `occurred_at` date in the user's time zone → `estimated`; else
+    the earliest confirmation's `occurred_at` date in the cycle's time zone → `estimated`; else
     `null` → `unknown` (FR-025/026).
   - **Manual overrides** (FR-036): an overridden field keeps the user's value. If newly derived
     evidence would change that field, raise a `manual_conflict` review item (deduplicated per

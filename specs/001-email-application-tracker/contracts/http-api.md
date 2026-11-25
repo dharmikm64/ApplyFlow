@@ -37,7 +37,7 @@ Same-origin JSON API served by FastAPI. FastAPI also generates the OpenAPI docum
 
 ```json
 {
-  "user": {"email": "string", "displayName": "string", "timezone": "America/New_York"},
+  "user": {"email": "string", "displayName": "string"},
   "csrfToken": "string",
   "gmail": {"status": "not_connected|connected|denied|revoked", "address": "string|null"},
   "cycle": {"startDate": "2026-09-01|null", "timezone": "string|null",
@@ -45,13 +45,13 @@ Same-origin JSON API served by FastAPI. FastAPI also generates the OpenAPI docum
 }
 ```
 
-`PATCH /api/me` `{ "timezone": "Europe/London" }` → `200` (same shape). `422` for an invalid
-IANA name.
+The time zone lives only on the cycle (`cycle.timezone`) and is changed via `PUT /api/cycle`.
 
 ### Gmail connection
 
-`DELETE /api/gmail` → `204`. Revokes at Google, deletes stored tokens (FR-041), and keeps
-imported data.
+`DELETE /api/gmail` → `204`. Fails any queued or running scan with `gmail_disconnected`, revokes
+at Google, deletes stored tokens (FR-041), and keeps imported data. No Gmail request is made after
+it returns.
 
 ### Recruiting cycle
 
@@ -80,7 +80,7 @@ if one is active (FR-009). `409 {"error":"no_start_date"}` or `409
  "progress": {"listed": 0, "estimatedTotal": 0, "screened": 0, "candidates": 0,
               "processed": 0},
  "results": {"createdApps": 0, "updatedApps": 0, "reviewItems": 0},
- "failureCode": "reconnect_required|gmail_unavailable|internal_error|null",
+ "failureCode": "reconnect_required|gmail_disconnected|gmail_unavailable|internal_error|null",
  "startedAt": "ts|null", "finishedAt": "ts|null"}
 ```
 
@@ -146,6 +146,10 @@ event (FR-035/036). Any other status value → `422`.
 
 `DELETE /api/data` `{ "confirm": "DELETE" }` → `204`. Deletes all imported data (FR-042). The
 Gmail connection and start date are kept. `409` while a scan is running.
+
+`DELETE /api/account` `{ "confirm": "DELETE" }` → `204`. Delete account (FR-042a): cancels any scan,
+revokes Gmail at Google, deletes the user and every owned record (cascade), and clears the
+`af_session` cookie. A wrong or missing confirm → `422`.
 
 ## Test-only routes (`APP_ENV=test` only; not registered otherwise)
 

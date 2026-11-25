@@ -27,7 +27,6 @@ users 1─* review_items *─0..1 processed_messages, *─0..* applications (can
 | google_sub | text UNIQUE NOT NULL | OIDC `sub`; the identity key |
 | email | text NOT NULL | from ID token; display only |
 | display_name | text | |
-| timezone | text NOT NULL default `'UTC'` | IANA name, validated with `zoneinfo` |
 | created_at, updated_at | timestamptz | |
 
 ## sessions
@@ -45,7 +44,7 @@ users 1─* review_items *─0..1 processed_messages, *─0..* applications (can
 |---|---|---|
 | user_id | uuid PK, FK → users ON DELETE CASCADE | one per user (FR-004) |
 | gmail_address | text NOT NULL | from `users.getProfile` |
-| status | enum `connected`, `revoked`, `denied` | `disconnected` = the row is deleted, except `denied`/`revoked` rows kept for UI state |
+| status | enum `connected`, `revoked`, `denied` | `disconnected` = the row is deleted, except `denied`/`revoked` rows kept for UI state. Expired access (`invalid_grant`, including the 7-day refresh-token expiry in Google testing mode) is recorded as `revoked` |
 | refresh_token_ciphertext | bytea NULL | MultiFernet. Set to NULL when status ≠ `connected` |
 | granted_scopes | text[] NOT NULL | must contain `gmail.readonly` for `connected` |
 | connected_at, updated_at | timestamptz | |
@@ -65,7 +64,7 @@ the scope) · `connected → revoked` (`invalid_grant` during a job) · `denied|
 |---|---|---|
 | user_id | uuid PK, FK → users ON DELETE CASCADE | one active cycle (FR-004) |
 | start_date | date NOT NULL | inclusive (FR-006); not in the future |
-| timezone | text NOT NULL | copied from the user setting when the date is set; used for boundary math |
+| timezone | text NOT NULL | IANA name, validated with `zoneinfo`. **The only stored time zone**: used for the scan window and for the date of estimated Date Applied values |
 | source_gmail_address | text NULL | mailbox the imported data came from; NULL when there is no data |
 | covered_from_utc | timestamptz NULL | earliest boundary successfully scanned |
 | covered_to_utc | timestamptz NULL | `window_end` of the last successful run = **last successful sync time** |
@@ -85,20 +84,22 @@ true` on rows whose evidence events all have `occurred_at < new_start` (nothing 
 | kind | enum `initial`, `sync` | |
 | status | enum `queued`, `running`, `succeeded`, `failed` | |
 | window_start_utc, window_end_utc | timestamptz NOT NULL | `end` = creation time (FR-007/008) |
-| segments | jsonb NOT NULL | ordered list of `{from, to}` ranges to list (e.g. back-fill plus new mail) |
+| segments | jsonb NOT NULL | ordered list of `{from, to}` ranges to list. Sync: `[covered_to − 1 h, window_end)` plus a back-fill `[start, covered_from)` when the start date moved earlier |
 | segment_index | int default 0 | resume cursor |
 | page_token | text NULL | resume cursor within the current segment |
 | listed, screened, candidates, processed, created_apps, updated_apps, review_items | int default 0 | progress counters |
 | estimated_total | int NULL | Gmail `resultSizeEstimate` sum; shown as approximate |
 | worker_id | text NULL | |
 | heartbeat_at, started_at, finished_at, created_at | timestamptz | |
-| failure_code | text NULL | `reconnect_required`, `gmail_unavailable`, `internal_error` |
+| failure_code | text NULL | `reconnect_required`, `gmail_disconnected`, `gmail_unavailable`, `internal_error` |
 | attempt | int default 0 | incremented on reclaim; the run fails after 5 attempts |
 
 **Constraints**: partial UNIQUE index `(user_id) WHERE status IN ('queued','running')`
 (FR-009). Index `(status, heartbeat_at)` for claiming.
 
-**States**: `queued → running → succeeded | failed`. A `running` run with a heartbeat older than
+**States**: `queued → running → succeeded | failed`. Disconnecting Gmail fails any queued or
+running run with `gmail_disconnected`. The job re-reads the connection before each page and
+stops without another Gmail request when it's gone (FR-041). A `running` run with a heartbeat older than
 2 min is reclaimed (`attempt+1`). On `succeeded`, update `recruiting_cycles.covered_*` in the
 same transaction. On `failed`, the covered range is unchanged (FR-011).
 
@@ -122,6 +123,10 @@ same transaction. On `failed`, the covered range is unchanged (FR-011).
 
 **Constraints**: UNIQUE `(user_id, gmail_message_id)`. This is the idempotency key: an
 existing row means the message is skipped on re-scan (FR-010).
+
+**Only in-window messages are recorded.** Messages returned because of the ±1-day query padding
+but outside the exact window are skipped **without** inserting a row, so a later back-fill after
+moving the start date earlier still processes them (FR-043).
 
 ## applications
 
@@ -202,3 +207,6 @@ user's applications) · `apply` (accept the suggested field or status change) ·
   `review_items`, `processed_messages`, and `scan_runs`, and resets the `recruiting_cycles`
   coverage and `source_gmail_address`. It keeps `users`, `sessions`, `gmail_connections`, and
   `start_date`.
+- "Delete account" (FR-042a) revokes Gmail, then deletes the `users` row. Every other table
+  cascades (`ON DELETE CASCADE`), so no record of the user remains. The session cookie is
+  cleared.

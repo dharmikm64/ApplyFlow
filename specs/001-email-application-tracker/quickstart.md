@@ -21,6 +21,10 @@ the validation checklist.
   - OAuth client (Web application). Authorized redirect URIs:
     `http://localhost:5173/auth/callback` and `http://localhost:5173/auth/gmail/callback`.
 
+> **Weekly reconnect**: while the OAuth app is in **Testing** status, Google's refresh tokens for
+> Gmail access expire after 7 days. Expect the reconnect banner about once a week. This is
+> normal, and reconnecting takes one click.
+
 ## Setup
 
 ```bash
@@ -61,6 +65,8 @@ for labeled controls and table headers.
 
 Run with `APP_ENV=development` (real Google). Tick each item:
 
+0. [ ] **Onboarding time (SC-001)**: start a timer at the first visit and stop it when the scan
+       starts. Record the time (target: under 5 minutes, excluding the scan itself).
 1. [ ] Sign in with Google. Only `openid email profile` is requested, and the dashboard shows
        "Connect Gmail".
 2. [ ] Connect Gmail. ApplyFlow's explanation appears first. Google's consent lists **only**
@@ -82,5 +88,9 @@ Run with `APP_ENV=development` (real Google). Tick each item:
 9. [ ] `grep -riE "ya29\.|refresh_token|BEGIN" logs/ backend/*.log` finds nothing. The server
        output contains no email bodies.
 10. [ ] Delete imported data. The table is empty, and the Gmail connection is unchanged.
-11. [ ] Confirm that Gmail itself is unchanged: no messages read/unread-toggled, labeled,
+11. [ ] Start a scan, then disconnect while it runs. The run fails with "Gmail disconnected",
+        saved rows remain, and the server log shows no Gmail request after the disconnect.
+12. [ ] Delete account in Settings. You're signed out, and signing in again shows a fresh
+        onboarding with no data. In the database, no rows remain for the old user.
+13. [ ] Confirm that Gmail itself is unchanged: no messages read/unread-toggled, labeled,
         archived, or deleted.

@@ -185,7 +185,8 @@ the visible rows and their order.
 ### User Story 5 - Control access and data (Priority: P2)
 
 The user can disconnect Gmail, which immediately stops access and removes stored Gmail
-credentials, while keeping their table. Separately, they can delete all imported data. If they
+credentials, while keeping their table. Separately, they can delete all imported data, or delete
+their whole ApplyFlow account. If they
 change the recruiting start date, ApplyFlow explains the effect on existing rows before applying
 it. If Gmail access is denied or revoked, the app shows a clear way to reconnect.
 
@@ -217,6 +218,13 @@ access from the Google account and check that "Sync now" leads to a reconnect st
 6. **Given** two different users, **When** one tries to view, edit, or resolve the other's
    applications or review items by any means, **Then** the attempt is refused and reveals
    nothing about whether the records exist.
+7. **Given** a signed-in user, **When** they choose "Delete account" and confirm, **Then** Gmail
+   access is revoked, every record belonging to them (account, sessions, connection, start date,
+   applications, events, evidence, review items, scan history) is permanently removed, and
+   they are signed out. Signing in again starts as a brand-new user.
+8. **Given** a connected user with a scan running, **When** they disconnect Gmail, **Then** the
+   scan stops before reading any further email, keeps the rows saved so far, and makes no
+   further Gmail requests.
 
 ---
 
@@ -276,13 +284,15 @@ access from the Google account and check that "Sync now" leads to a reconnect st
 **Recruiting cycle and scanning**
 
 - **FR-006**: Users MUST choose a recruiting-cycle start date before the first scan. The date is
-  inclusive, starting at 00:00 in the user's time zone. The time zone is detected from the
-  browser and shown so the user can change it.
+  inclusive, starting at 00:00 in the cycle's time zone. The time zone is detected from the
+  browser and shown so the user can change it. It is stored once, with the recruiting cycle, and
+  is used both for the scan window and for dating estimated Date Applied values.
 - **FR-007**: "Scan emails" MUST examine emails from the start date through the moment the scan
   begins, including archived emails and excluding Spam and Trash.
 - **FR-008**: "Sync now" MUST examine emails received since the last successful scan or sync, and
   any newly added earlier period after the start date was moved earlier, through the moment the
-  sync begins.
+  sync begins. Each sync window starts 1 hour before the previous successful sync's end, so
+  late-arriving emails are not missed. Overlapping emails are skipped by FR-010.
 - **FR-009**: Only one scan or sync per user MAY run at a time. Progress (for example, emails
   examined out of the estimated total) MUST be visible while it runs and after a page reload.
 - **FR-010**: Processing the same email more than once MUST NOT create duplicate applications,
@@ -313,7 +323,7 @@ access from the Google account and check that "Sync now" leads to a reconnect st
 - **FR-020a**: Classification and extraction MUST be deterministic and rule-based (sender and
   subject filtering, phrase matching, text patterns): the same email always yields the same
   result. No language model is used, and email content MUST NOT be sent to any third-party
-  service for analysis. Emails no rule settles confidently go to review (FR-018).
+  service for analysis.
 
 **Application identity**
 
@@ -383,9 +393,14 @@ access from the Google account and check that "Sync now" leads to a reconnect st
   accessible only to that user. Attempts to access another user's records MUST be refused
   without revealing whether those records exist.
 - **FR-041**: Users MUST be able to disconnect Gmail, which revokes access and deletes stored
-  Gmail credentials but keeps imported data.
+  Gmail credentials but keeps imported data. Disconnecting cancels any queued or running scan,
+  and no Gmail request is made after the disconnect completes.
 - **FR-042**: Users MUST be able to delete all imported data (applications, events, evidence,
   review items) separately from disconnecting, after an explicit confirmation.
+- **FR-042a**: Users MUST be able to delete their ApplyFlow account after an explicit
+  confirmation. This revokes Gmail access and permanently removes every record belonging to the
+  user (account, sessions, Gmail connection, recruiting cycle, scan runs, and all imported data),
+  then signs them out.
 - **FR-043**: Changing the start date MUST show its effect on existing rows before it is applied,
   and MUST NEVER delete records automatically. Rows whose evidence is entirely before a new later
   start date MUST be labeled "before current cycle" and kept until the user deletes them.
@@ -404,13 +419,13 @@ access from the Google account and check that "Sync now" leads to a reconnect st
 
 ### Key Entities
 
-- **User**: A person signed in with Google. Has a time zone, one recruiting cycle, and at most
-  one Gmail connection. Owns all other records.
+- **User**: A person signed in with Google. Has one recruiting cycle and at most one Gmail
+  connection. Owns all other records.
 - **Gmail Connection**: The user's read-only Gmail authorization. Includes the connected address,
-  connection status (connected, denied, revoked/expired, disconnected), and protected
-  credentials. Credentials are removed on disconnect.
-- **Recruiting Cycle**: The user's active cycle. Includes the inclusive start date and time zone,
-  and the covered date range.
+  connection status (connected, denied, revoked, or disconnected, where expired access is
+  treated as revoked), and protected credentials. Credentials are removed on disconnect.
+- **Recruiting Cycle**: The user's active cycle. Includes the inclusive start date, the user's
+  time zone (the only stored time zone), and the covered date range.
 - **Scan Run**: One "Scan emails" or "Sync now" execution. Includes type, time window, status
   (running, succeeded, failed), progress counts, start and finish times, and a user-safe failure
   reason. The last succeeded run gives the last successful sync time.
@@ -422,7 +437,8 @@ access from the Google account and check that "Sync now" leads to a reconnect st
 - **Application Event**: A dated occurrence in an application's history, such as a confirmation,
   progress update, rejection, generic acknowledgment, offer or withdrawal notice, or manual
   edit. Links to its supporting email evidence when it came from an email.
-- **Email Evidence**: The minimal record of a processed email: message identifier, sender,
+- **Email Evidence** (stored as "processed messages" in the data model): The minimal record of a
+  processed email: message identifier, sender,
   subject, received date, classification, and short excerpt. Each email is processed at most
   once per user, which keeps scans idempotent.
 - **Review Item**: An uncertain finding awaiting the user's decision. Types: possible new
@@ -477,6 +493,10 @@ access from the Google account and check that "Sync now" leads to a reconnect st
 - **Deployment (MVP)**: ApplyFlow runs locally on the developer's machine at no cost. Google
   sign-in runs in testing mode with only the developer's own Gmail account allowlisted. Google
   app verification is not pursued, so the "unverified app" warning is expected.
+- **Weekly reconnect in testing mode**: Google issues refresh tokens that expire after 7 days to
+  apps in "Testing" status that request Gmail access. In the MVP, the user should expect to
+  reconnect Gmail about once a week. The reconnect state (FR-005) explains this in plain
+  language. It goes away once the app is verified and published.
 - **Future deployment**: Moving to an online deployment for a small allowlist of test users on
   free hosting tiers is a likely next step. The MVP MUST NOT block it: environment-specific
   values (addresses, credentials, allowed accounts) come from configuration, and long scans
